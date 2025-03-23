@@ -1,6 +1,6 @@
 # pokedex
 
-An example Flutter app using the PokeAPI.
+An example Flutter app using the PokeAPI (https://pokeapi.co/).
 
 ## Getting Started
 
