@@ -156,22 +156,25 @@ class _PokemonSpeciesThumbnailState extends State<PokemonSpeciesThumbnail> {
 
   @override
   Widget build(BuildContext context) {
-    return pokemon?.sprites.frontDefault == null
-        ? SizedBox.shrink()
-        : MaterialButton(
-          onPressed: () {},
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(species?.getEnglishName() ?? widget.species.name ?? '???'),
-              CachedNetworkImage(
-                imageUrl: pokemon!.sprites.frontDefault!,
-                placeholder: (context, url) => CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-              // ElevatedButton(onPressed: () {}, child: Text('VIEW')),
-            ],
-          ),
-        );
+    return MaterialButton(
+      onPressed: () {},
+      child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(species?.getEnglishName() ?? widget.species.name ?? '???'),
+            pokemon?.sprites.frontDefault == null
+                ? Icon(Icons.question_mark)
+                : CachedNetworkImage(
+                  imageUrl: pokemon!.sprites.frontDefault!,
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                ),
+            // ElevatedButton(onPressed: () {}, child: Text('VIEW')),
+          ],
+        ),
+      ),
+    );
   }
 }
